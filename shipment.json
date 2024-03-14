@@ -2,8 +2,7 @@
     "openapi": "3.0.1",
     "info": {
         "title": "Shipment Data API",
-        "version": "v1",
-		"api_name": "Shipment Data API"
+        "version": "v1"
     },
     "paths": {
         "/Shipment/select": {
