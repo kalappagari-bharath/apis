@@ -356,18 +356,6 @@
                 }
             }
         },
-        "/Shipment/healthcheck": {
-            "get": {
-                "tags": [
-                    "Shipment"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    }
-                }
-            }
-        },
         "/ShipmentSearch/search": {
             "post": {
                 "tags": [
