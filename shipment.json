@@ -2,8 +2,7 @@
     "openapi": "3.0.1",
     "info": {
         "title": "Shipment Data API",
-        "version": "v1",
-		"ApiId": "your_api_id_here"
+        "version": "v1"
     },
     "paths": {
         "/Shipment/select": {
@@ -353,6 +352,18 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+        },
+        "/Shipment/healthcheck": {
+            "get": {
+                "tags": [
+                    "Shipment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
                     }
                 }
             }
