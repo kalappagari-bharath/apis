@@ -1,0 +1,52 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Boss.SecurityGroup.Api",
+        "version": "1.0"
+    },
+    "paths": {
+        "/SecurityGroup/search": {
+            "get": {
+                "tags": [
+                    "SecurityGroup"
+                ],
+                "parameters": [
+                    {
+                        "name": "processingCountryCode",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/SecurityGroup/searchByID": {
+            "get": {
+                "tags": [
+                    "SecurityGroup"
+                ],
+                "parameters": [
+                    {
+                        "name": "documentIdentifierNumber",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    },
+    "components": {}
+}

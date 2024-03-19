@@ -1,0 +1,231 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Boss.Transaction.Api",
+        "version": "1.0"
+    },
+    "paths": {
+        "/BrokerageTransactions/save": {
+            "post": {
+                "tags": [
+                    "BrokerageTransactions"
+                ],
+                "operationId": "save",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreBrokerageTransactionRequest"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreBrokerageTransactionRequest"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreBrokerageTransactionRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/BrokerageTransactions/update": {
+            "put": {
+                "tags": [
+                    "BrokerageTransactions"
+                ],
+                "operationId": "update",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateBrokerageTransactionRequest"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateBrokerageTransactionRequest"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateBrokerageTransactionRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/BrokerageTransactions/select": {
+            "get": {
+                "tags": [
+                    "BrokerageTransactions"
+                ],
+                "operationId": "/select",
+                "parameters": [
+                    {
+                        "name": "ProcessingCountryCode",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "TransactionIdentificationNumber",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "RetrieveMessageText",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/BrokerageTransactions/healthcheck": {
+            "get": {
+                "tags": [
+                    "BrokerageTransactions"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "StoreBrokerageTransactionRequest": {
+                "required": [
+                    "messageReceivedTimestamp",
+                    "messageText",
+                    "messageTypeText",
+                    "processingCountryCode",
+                    "processingStatusCode"
+                ],
+                "type": "object",
+                "properties": {
+                    "processingCountryCode": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "messageTypeText": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "messageFormatCategoryCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "baseObjectIdentifierNumber": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "sourceSystemMessageIdentificationNumber": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "processingStatusCode": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "messageReceivedTimestamp": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "batchJobSystemIdentificationNumber": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "messageText": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "batchCreationUserNumber": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "messageRetryScheduledDate": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "fileExtension": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "messageRetryAttemptedQuantity": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "messageSubtypeText": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "UpdateBrokerageTransactionRequest": {
+                "required": [
+                    "processingCountryCode",
+                    "processingStatusCode",
+                    "transactionIdentificationNumber"
+                ],
+                "type": "object",
+                "properties": {
+                    "processingCountryCode": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "processingStatusCode": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "transactionIdentificationNumber": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "messageRetryScheduledDate": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "messageRetrySequenceNumber": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "messageRetryAttemptedQuantity": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    }
+}
